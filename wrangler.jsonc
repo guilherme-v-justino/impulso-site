@@ -1,0 +1,10 @@
+{
+  "name": "guilhermevj",
+  "compatibility_date": "2026-11-10",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "impulsofisiovet.com.br", "custom_domain": true }
+  ],
+  "assets": { "directory": "./dist" }
+}
