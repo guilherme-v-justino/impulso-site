@@ -4,7 +4,7 @@
 const clinic = Object.freeze({
   whatsapp: '5541992384832',
   message: 'Olá! Gostaria de atendimento para o meu pet.',
-  maps: 'https://www.google.com/maps/place/Impulso+Fisioterapia+Veterin%C3%A1ria/@-25.4633205,-49.2922883,17z/data=!3m1!4b1!4m6!3m5!1s0x94dce348895e49fd:0xf7eaadb335a3d316!8m2!3d-25.4633205!4d-49.2922883!16s%2Fg%2F11ph8pnn19',
+  maps: 'https://maps.google.com/maps?cid=17864281857129173782',
   mapEmbed: 'https://maps.google.com/maps?q=-25.4633205,-49.2922883&z=17&output=embed',
 });
 

@@ -17,6 +17,12 @@
   }
 
   function startAnalytics() {
+    if (['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname)) {
+      loaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      return;
+    }
     if (loaded) return;
     loaded = true;
     window.dataLayer = window.dataLayer || [];
@@ -55,7 +61,7 @@
   panel.className = 'analytics-choice';
   panel.hidden = true;
   panel.setAttribute('aria-label', 'Preferências de medição de visitas');
-  panel.innerHTML = '<div><strong>Podemos medir as visitas ao site?</strong><p>Com sua permissão, usamos o Google Analytics para entender os acessos e os cliques no WhatsApp. Você pode recusar e continuar normalmente. <a href="/privacidade">Saiba mais</a>.</p></div><div class="analytics-actions"><button type="button" class="button button-small" data-analytics-choice="no">Recusar</button><button type="button" class="button button-small" data-analytics-choice="yes">Aceitar medição</button></div>';
+  panel.innerHTML = '<div><strong>Podemos medir as visitas ao site?</strong><p>Com sua permissão, usamos o Google Analytics para entender os acessos e os cliques nos canais de contato. Você pode recusar e continuar normalmente. <a href="/privacidade">Saiba mais</a>.</p></div><div class="analytics-actions"><button type="button" class="button button-small" data-analytics-choice="no">Recusar</button><button type="button" class="button button-small" data-analytics-choice="yes">Aceitar medição</button></div>';
   document.body.append(panel);
 
   const settings = document.createElement('button');
@@ -109,6 +115,17 @@
       window.gtag('event', 'whatsapp_click', {
         contact_method: 'whatsapp',
         button_location: link.dataset.contact,
+        transport_type: 'beacon',
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (!accepted || !loaded) return;
+      window.gtag('event', 'phone_click', {
+        contact_method: 'phone',
+        button_location: link.closest('footer') ? 'rodape' : 'contato',
         transport_type: 'beacon',
       });
     });
