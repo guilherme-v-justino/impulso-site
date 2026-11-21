@@ -1,0 +1,15 @@
+# Apenas os arquivos publicos do site devem ser enviados como assets.
+.git/
+.github/
+.wrangler/
+dist/
+node_modules/
+wrangler.jsonc
+.gitignore
+.assetsignore
+.env*
+.dev.vars*
+package*.json
+pnpm-lock.yaml
+yarn.lock
+*.log

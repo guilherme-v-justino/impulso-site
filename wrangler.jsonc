@@ -6,5 +6,8 @@
   "routes": [
     { "pattern": "impulsofisiovet.com.br", "custom_domain": true }
   ],
-  "assets": { "directory": "./dist" }
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page"
+  }
 }
